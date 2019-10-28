@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+  }
+
+  .mat-header-row {
+    cursor: pointer;
+  }
+
+  .mat-row {
+    cursor: default;
+  }

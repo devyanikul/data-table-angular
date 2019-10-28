@@ -1,0 +1,55 @@
+<div class="container" *ngIf="showTable">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by first name">
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-4">
+            <ng-container matColumnDef="firstname">
+                <th mat-header-cell *matHeaderCellDef> First Name<i class="fa fa-angle-up"></i></th>
+                <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+            </ng-container>
+            <ng-container matColumnDef="lastname">
+                <th mat-header-cell *matHeaderCellDef> Last Name<i class="fa fa-angle-up"></i></th>
+                <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Company">
+                <th mat-header-cell *matHeaderCellDef> Company Name<i class="fa fa-angle-up"></i></th>
+                <td mat-cell *matCellDef="let element"> {{element.Company}} </td>
+            </ng-container>
+            <ng-container matColumnDef="City">
+                <th mat-header-cell *matHeaderCellDef> City<i class="fa fa-angle-up"></i></th>
+                <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+            </ng-container>
+            <ng-container matColumnDef="State">
+                    <th mat-header-cell *matHeaderCellDef> State<i class="fa fa-angle-up"></i></th>
+                    <td mat-cell *matCellDef="let element"> {{element.State}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ZIP">
+                    <th mat-header-cell *matHeaderCellDef> ZIP<i class="fa fa-angle-up"></i></th>
+                    <td mat-cell *matCellDef="let element"> {{element.ZIP}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Email">
+                    <th mat-header-cell *matHeaderCellDef> Email<i class="fa fa-angle-up"></i></th>
+                    <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Web">
+                    <th mat-header-cell *matHeaderCellDef> Web<i class="fa fa-angle-up"></i></th>
+                    <td mat-cell *matCellDef="let element"> {{element.Web}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Age">
+                    <th mat-header-cell *matHeaderCellDef> Age<i class="fa fa-angle-up"></i></th>
+                    <td mat-cell *matCellDef="let element"> {{element.Age}} </td>
+            </ng-container>
+            <tr mat-header-row (click)="sort($event, dataSource)" *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row (click)="showDetailedView(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <app-paginator 
+        [data]="userLog"
+        (slicedTable)="paginator($event)">
+    </app-paginator>
+</div>
+<app-user *ngIf="showSelectedUser" 
+    [userData]="userData"
+    (showTable)="showTableMethod()">
+</app-user>
